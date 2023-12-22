@@ -26,13 +26,14 @@ const maxSpeed = ref(0);
 </script>
 <template>
   <div class="w-full h-screen bg-stone-900 flex items-center">
-    <Speedometer :mph="mph" :max-speed="maxSpeed" />
+    <div class="flex-grow"></div>
     <div class="h-40 relative">
       <img src="./assets/speed_limit.svg" class="h-40" />
       <div class="speed_limit absolute top-0 w-full text-center text-7xl mt-20">
         {{ maxSpeed }}
       </div>
     </div>
+    <Speedometer :mph="mph" :max-speed="maxSpeed" />
   </div>
 </template>
 <style scoped>
