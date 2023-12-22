@@ -41,11 +41,6 @@ const maxSpeed = ref(0);
   background-size: cover;
 }
 
-@font-face {
-  font-family: "Highway Gothic";
-  src: url("@/assets/highway_gothic/HWYGOTH.ttf");
-}
-
 .speed_limit {
   font-family: "Highway Gothic";
 }
