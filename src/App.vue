@@ -25,9 +25,7 @@ navigator.geolocation.watchPosition(({ coords }) => {
 const maxSpeed = ref(0);
 </script>
 <template>
-  <div
-    class="border border-red-500 w-[844px] h-[390px] bg-stone-900 flex items-center"
-  >
+  <div class="w-full h-screen bg-stone-900 flex items-center">
     <Speedometer :mph="mph" :max-speed="maxSpeed" />
     <div class="h-40 relative">
       <img src="./assets/speed_limit.svg" class="h-40" />
