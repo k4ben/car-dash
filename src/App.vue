@@ -43,7 +43,7 @@ const maxSpeed = ref(0);
 
 @font-face {
   font-family: "Highway Gothic";
-  src: url("./assets/highway_gothic/HWYGOTH.ttf") format("truetype");
+  src: url("@/assets/highway_gothic/HWYGOTH.ttf");
 }
 
 .speed_limit {
