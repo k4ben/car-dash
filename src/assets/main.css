@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Highway Gothic";
-  src: url("@/assets/HWYGOTH.ttf");
+  font-family: 'Highway Gothic';
+  src: url('../assets/hwygoth-webfont.woff2') format('woff2'),
+       url('../assets/hwygoth-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
 }
