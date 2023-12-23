@@ -19,7 +19,16 @@ navigator.geolocation.watchPosition(({ coords }) => {
   getMaxSpeed(coords.longitude, coords.latitude).then(
     (x) => (maxSpeed.value = x)
   );
-  mph.value = (coords.speed ?? 0) * 2.23694;
+  anime({
+    targets: mph,
+    value: (coords.speed ?? 0) * 2.23694,
+    easing: "linear",
+    duration: 500,
+  });
+});
+
+getMaxSpeed(-77.117037, 38.885251).then((x) => {
+  maxSpeed.value = x;
 });
 
 const maxSpeed = ref(0);
