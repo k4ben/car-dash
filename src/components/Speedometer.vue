@@ -103,100 +103,108 @@ const pie2 = computed(() =>
 </script>
 
 <template>
-  <svg :width="svgWidth" :height="svgHeight" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="circleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color: #a8a29e; stop-opacity: 1" />
-        <stop offset="100%" style="stop-color: #78716c; stop-opacity: 1" />
-      </linearGradient>
-    </defs>
-    <filter id="shadow" color-interpolation-filters="sRGB">
-      <feDropShadow dx="-2" dy="2" stdDeviation="3" flood-opacity="0.2" />
-    </filter>
+  <div class="-mx-[45px]">
+    <svg
+      :width="svgWidth"
+      :height="svgHeight"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <linearGradient id="circleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color: #a8a29e; stop-opacity: 1" />
+          <stop offset="100%" style="stop-color: #78716c; stop-opacity: 1" />
+        </linearGradient>
+      </defs>
+      <filter id="shadow" color-interpolation-filters="sRGB">
+        <feDropShadow dx="-2" dy="2" stdDeviation="3" flood-opacity="0.2" />
+      </filter>
 
-    <circle
-      :cx="circleCenterX"
-      :cy="circleCenterY"
-      :r="circleRadius"
-      :fill="circleFill"
-    />
-    <path :d="pie1" fill="currentColor" class="text-blue-700"></path>
-    <path
-      :d="pie2"
-      fill="currentColor"
-      class="text-red-700"
-      v-if="mph > maxSpeed"
-    ></path>
-    <g>
       <circle
-        filter="url(#shadow)"
         :cx="circleCenterX"
         :cy="circleCenterY"
-        :r="90"
-        class="shadow-md"
-        fill="url(#circleGradient)"
+        :r="circleRadius"
+        :fill="circleFill"
       />
-      <text
-        x="50%"
-        y="50%"
-        text-anchor="middle"
-        class="fill-current text-stone-50 text-8xl font-medium"
-        dy=".3em"
-      >
-        {{ Math.floor(mph) }}
-      </text>
-      <text
-        x="50%"
-        y="64%"
-        text-anchor="middle"
-        class="fill-current text-stone-300 text-xl font-medium"
-        dy=".3em"
-      >
-        mph
-      </text>
-    </g>
+      <path :d="pie1" fill="currentColor" class="text-blue-700"></path>
+      <path
+        :d="pie2"
+        fill="currentColor"
+        class="text-red-700"
+        v-if="mph > maxSpeed"
+      ></path>
+      <g>
+        <circle
+          filter="url(#shadow)"
+          :cx="circleCenterX"
+          :cy="circleCenterY"
+          :r="90"
+          class="shadow-md"
+          fill="url(#circleGradient)"
+        />
+        <text
+          x="50%"
+          y="50%"
+          text-anchor="middle"
+          class="fill-current text-stone-50 text-8xl font-medium"
+          dy=".3em"
+        >
+          {{ Math.floor(mph) }}
+        </text>
+        <text
+          x="50%"
+          y="64%"
+          text-anchor="middle"
+          class="fill-current text-stone-300 text-xl font-medium"
+          dy=".3em"
+        >
+          mph
+        </text>
+      </g>
 
-    <g :stroke="tickStroke" :stroke-width="tickStrokeWidth">
-      <template v-for="(tick, index) in new Array(tickCount)">
-        <line
-          v-if="start + index * tickAngle <= end"
-          :x1="tickStartX"
-          :y1="tickStartY"
-          :x2="tickEndX"
-          :y2="tickEndY"
-          :transform="`rotate(${
-            start + index * tickAngle
-          } ${circleCenterX} ${circleCenterY})`"
-          stroke-linecap="square"
-        />
-      </template>
-      <template v-for="(tick, index) in new Array(secondTickCount)">
-        <line
-          v-if="start + index * secondTickAngle <= end"
-          :x1="secondTickStartX"
-          :y1="secondTickStartY"
-          :x2="secondTickEndX"
-          :y2="secondTickEndY"
-          :transform="`rotate(${
-            start + index * secondTickAngle
-          } ${circleCenterX} ${circleCenterY})`"
-          stroke-linecap="square"
-        />
-      </template>
-      <template v-for="(tick, index) in new Array(secondTickCount)"></template>
-    </g>
-    <text
-      v-for="p in points"
-      :x="p.x"
-      :y="p.y"
-      text-anchor="middle"
-      class="fill-current text-stone-300 text-lg font-medium"
-      dy=".3em"
-      v-show="p.i < 9"
-    >
-      {{ p.i * 20 }}
-    </text>
-  </svg>
+      <g :stroke="tickStroke" :stroke-width="tickStrokeWidth">
+        <template v-for="(tick, index) in new Array(tickCount)">
+          <line
+            v-if="start + index * tickAngle <= end"
+            :x1="tickStartX"
+            :y1="tickStartY"
+            :x2="tickEndX"
+            :y2="tickEndY"
+            :transform="`rotate(${
+              start + index * tickAngle
+            } ${circleCenterX} ${circleCenterY})`"
+            stroke-linecap="square"
+          />
+        </template>
+        <template v-for="(tick, index) in new Array(secondTickCount)">
+          <line
+            v-if="start + index * secondTickAngle <= end"
+            :x1="secondTickStartX"
+            :y1="secondTickStartY"
+            :x2="secondTickEndX"
+            :y2="secondTickEndY"
+            :transform="`rotate(${
+              start + index * secondTickAngle
+            } ${circleCenterX} ${circleCenterY})`"
+            stroke-linecap="square"
+          />
+        </template>
+        <template
+          v-for="(tick, index) in new Array(secondTickCount)"
+        ></template>
+      </g>
+      <text
+        v-for="p in points"
+        :x="p.x"
+        :y="p.y"
+        text-anchor="middle"
+        class="fill-current text-stone-300 text-lg font-medium"
+        dy=".3em"
+        v-show="p.i < 9"
+      >
+        {{ p.i * 20 }}
+      </text>
+    </svg>
+  </div>
 </template>
 <style>
 /* @font-face {
@@ -205,6 +213,6 @@ const pie2 = computed(() =>
     format("opentype");
 } */
 body {
-  font-family: ui-rounded;
+  font-family: ui-rounded, system-ui;
 }
 </style>
