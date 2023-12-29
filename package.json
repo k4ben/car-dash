@@ -14,6 +14,7 @@
     "@types/animejs": "^3.1.12",
     "animejs": "^3.2.2",
     "axios": "^1.6.2",
+    "ol": "^8.2.0",
     "pinia": "^2.1.7",
     "vue": "^3.3.11",
     "vue-number-animation": "^2.0.2"
